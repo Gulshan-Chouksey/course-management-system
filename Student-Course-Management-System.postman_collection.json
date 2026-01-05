@@ -1,0 +1,1113 @@
+{
+	"info": {
+		"_postman_id": "cms-api-collection-2025",
+		"name": "Student Course Management System API",
+		"description": "Complete API collection for Student Course Management System with all endpoints organized by module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"john.doe\",\n  \"email\": \"john.doe@university.edu\",\n  \"password\": \"SecurePass@123\",\n  \"role\": \"STUDENT\",\n  \"phone\": \"+1-555-0123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Register a new user in the system. No authentication required."
+					}
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"john.smith\",\n  \"password\": \"Faculty@123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Authenticate user and establish session"
+					}
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/current-user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"current-user"
+							]
+						},
+						"description": "Get details of currently logged-in user"
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						},
+						"description": "Logout current user and clear security context"
+					}
+				},
+				{
+					"name": "Hash Password (Test)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"TestPassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/hash-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"hash-password"
+							]
+						},
+						"description": "Test endpoint to verify password hashing"
+					}
+				}
+			],
+			"description": "Authentication endpoints for user registration, login, and logout"
+		},
+		{
+			"name": "Course Management",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseCode\": \"CS101\",\n  \"courseName\": \"Introduction to Programming\",\n  \"description\": \"Basic programming concepts using Java\",\n  \"credits\": 3,\n  \"department\": \"Computer Science\",\n  \"semester\": \"Fall 2025\",\n  \"capacity\": 30,\n  \"facultyId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/courses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses"
+							]
+						},
+						"description": "Create a new course (ADMIN only)"
+					}
+				},
+				{
+					"name": "Get All Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses"
+							]
+						},
+						"description": "Retrieve all courses in the system"
+					}
+				},
+				{
+					"name": "Get Course by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						},
+						"description": "Retrieve specific course details by ID"
+					}
+				},
+				{
+					"name": "Get Course by Course Code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/code/CS101",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"code",
+								"CS101"
+							]
+						},
+						"description": "Retrieve course by course code"
+					}
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseCode\": \"CS101\",\n  \"courseName\": \"Introduction to Programming - Updated\",\n  \"description\": \"Updated description\",\n  \"credits\": 4,\n  \"department\": \"Computer Science\",\n  \"semester\": \"Fall 2025\",\n  \"capacity\": 35\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						},
+						"description": "Update existing course details (ADMIN only)"
+					}
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						},
+						"description": "Delete a course from the system (ADMIN only)"
+					}
+				},
+				{
+					"name": "Get Courses by Faculty",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/faculty/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"faculty",
+								"1"
+							]
+						},
+						"description": "Get all courses taught by a specific faculty member"
+					}
+				},
+				{
+					"name": "Get Courses by Semester",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/semester/Fall 2025",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"semester",
+								"Fall 2025"
+							]
+						},
+						"description": "Get all courses offered in a specific semester"
+					}
+				},
+				{
+					"name": "Search Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/search?keyword=programming",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "programming"
+								}
+							]
+						},
+						"description": "Search courses by keyword"
+					}
+				},
+				{
+					"name": "Get Course Enrollments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/1/enrollments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								"1",
+								"enrollments"
+							]
+						},
+						"description": "Get all enrollments for a specific course"
+					}
+				}
+			],
+			"description": "Course management endpoints with CRUD operations"
+		},
+		{
+			"name": "Student Management",
+			"item": [
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"student\": {\n    \"firstName\": \"Alice\",\n    \"lastName\": \"Johnson\",\n    \"dateOfBirth\": \"2003-05-15\",\n    \"address\": \"123 College St, City, State 12345\",\n    \"enrollmentDate\": \"2025-09-01\",\n    \"department\": \"Computer Science\"\n  },\n  \"user\": {\n    \"username\": \"alice.johnson\",\n    \"email\": \"alice.johnson@university.edu\",\n    \"password\": \"Student@123\",\n    \"role\": \"STUDENT\",\n    \"phone\": \"+1-555-0456\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/students",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"students"
+							]
+						},
+						"description": "Create a new student record (ADMIN only)"
+					}
+				},
+				{
+					"name": "Get All Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"students"
+							]
+						},
+						"description": "Retrieve all student records (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Get Student by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						},
+						"description": "Retrieve specific student details"
+					}
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Johnson-Smith\",\n  \"address\": \"456 New Address St\",\n  \"department\": \"Computer Science\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/students/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						},
+						"description": "Update student information (ADMIN only)"
+					}
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						},
+						"description": "Delete a student record (ADMIN only)"
+					}
+				},
+				{
+					"name": "Search Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/search?keyword=alice",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "alice"
+								}
+							]
+						},
+						"description": "Search students by keyword (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Get Students by Department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/department/Computer Science",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"department",
+								"Computer Science"
+							]
+						},
+						"description": "Get all students in a specific department (ADMIN, FACULTY)"
+					}
+				}
+			],
+			"description": "Student management endpoints with role-based access control"
+		},
+		{
+			"name": "Faculty Management",
+			"item": [
+				{
+					"name": "Create Faculty",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"faculty\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\",\n    \"department\": \"Computer Science\",\n    \"qualification\": \"Ph.D. in Computer Science\",\n    \"joiningDate\": \"2020-08-15T00:00:00\"\n  },\n  \"user\": {\n    \"username\": \"john.smith\",\n    \"email\": \"john.smith@university.edu\",\n    \"password\": \"Faculty@123\",\n    \"role\": \"FACULTY\",\n    \"phone\": \"+1-555-0789\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/faculty",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"faculty"
+							]
+						},
+						"description": "Create a new faculty member (ADMIN only)"
+					}
+				},
+				{
+					"name": "Get All Faculty",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/faculty",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"faculty"
+							]
+						},
+						"description": "Retrieve all faculty members (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Get Faculty by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/faculty/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"faculty",
+								"1"
+							]
+						},
+						"description": "Retrieve specific faculty member details"
+					}
+				},
+				{
+					"name": "Update Faculty",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"department\": \"Computer Science\",\n  \"qualification\": \"Ph.D. in Computer Science, M.Tech\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/faculty/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"faculty",
+								"1"
+							]
+						},
+						"description": "Update faculty information (ADMIN only)"
+					}
+				},
+				{
+					"name": "Delete Faculty",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/faculty/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"faculty",
+								"1"
+							]
+						},
+						"description": "Delete a faculty member (ADMIN only)"
+					}
+				},
+				{
+					"name": "Get Faculty by Department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/faculty/department/Computer Science",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"faculty",
+								"department",
+								"Computer Science"
+							]
+						},
+						"description": "Get all faculty members in a specific department"
+					}
+				}
+			],
+			"description": "Faculty management endpoints with role-based access control"
+		},
+		{
+			"name": "Enrollment Management",
+			"item": [
+				{
+					"name": "Enroll Student in Course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentId\": 1,\n  \"courseId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/enrollments/enroll",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"enrollments",
+								"enroll"
+							]
+						},
+						"description": "Enroll a student in a course (ADMIN, STUDENT)"
+					}
+				},
+				{
+					"name": "Get Student Enrollments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/enrollments/student/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"enrollments",
+								"student",
+								"1"
+							]
+						},
+						"description": "Get all enrollments for a specific student"
+					}
+				},
+				{
+					"name": "Get Course Enrollments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/enrollments/course/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"enrollments",
+								"course",
+								"1"
+							]
+						},
+						"description": "Get all enrollments for a specific course (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Get Enrollment by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/enrollments/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"enrollments",
+								"1"
+							]
+						},
+						"description": "Get specific enrollment details"
+					}
+				},
+				{
+					"name": "Withdraw from Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/enrollments/1/withdraw",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"enrollments",
+								"1",
+								"withdraw"
+							]
+						},
+						"description": "Withdraw a student from a course (ADMIN, STUDENT)"
+					}
+				},
+				{
+					"name": "Get Active Enrollments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/enrollments/active/student/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"enrollments",
+								"active",
+								"student",
+								"1"
+							]
+						},
+						"description": "Get all active enrollments for a student"
+					}
+				},
+				{
+					"name": "Get Enrollments by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/enrollments/status/ACTIVE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"enrollments",
+								"status",
+								"ACTIVE"
+							]
+						},
+						"description": "Get enrollments filtered by status (ADMIN, FACULTY)"
+					}
+				}
+			],
+			"description": "Enrollment management with validation and authorization"
+		},
+		{
+			"name": "Grade Management",
+			"item": [
+				{
+					"name": "Add Grade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enrollmentId\": 1,\n  \"internalMarks\": 35,\n  \"externalMarks\": 55,\n  \"remarks\": \"Good performance\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/grades",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"grades"
+							]
+						},
+						"description": "Add a grade for an enrollment (FACULTY only)"
+					}
+				},
+				{
+					"name": "Update Grade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"internalMarks\": 38,\n  \"externalMarks\": 58,\n  \"remarks\": \"Improved performance\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/grades/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"grades",
+								"1"
+							]
+						},
+						"description": "Update an existing grade (FACULTY only)"
+					}
+				},
+				{
+					"name": "Get Grade by Enrollment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/grades/enrollment/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"grades",
+								"enrollment",
+								"1"
+							]
+						},
+						"description": "Get grade for a specific enrollment"
+					}
+				},
+				{
+					"name": "Get Grades by Student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/grades/student/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"grades",
+								"student",
+								"1"
+							]
+						},
+						"description": "Get all grades for a specific student"
+					}
+				},
+				{
+					"name": "Get Grades by Course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/grades/course/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"grades",
+								"course",
+								"1"
+							]
+						},
+						"description": "Get all grades for a specific course (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Generate Transcript",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/grades/student/1/transcript",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"grades",
+								"student",
+								"1",
+								"transcript"
+							]
+						},
+						"description": "Generate full transcript with GPA calculation"
+					}
+				},
+				{
+					"name": "Calculate GPA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/grades/student/1/gpa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"grades",
+								"student",
+								"1",
+								"gpa"
+							]
+						},
+						"description": "Calculate and return student's GPA"
+					}
+				}
+			],
+			"description": "Grade management with automatic calculation of total marks and letter grades"
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Get Enrollment Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/enrollment/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"enrollment",
+								"1"
+							]
+						},
+						"description": "Get list of students enrolled in a course (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Get Grade Distribution",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/grades/distribution/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"grades",
+								"distribution",
+								"1"
+							]
+						},
+						"description": "Get grade distribution statistics for a course (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Get Faculty Workload",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/faculty/workload/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"faculty",
+								"workload",
+								"1"
+							]
+						},
+						"description": "Get list of courses taught by a faculty member (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Get Student Transcript Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/student/transcript/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"student",
+								"transcript",
+								"1"
+							]
+						},
+						"description": "Generate comprehensive student transcript"
+					}
+				},
+				{
+					"name": "Get Course Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/course/statistics/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"course",
+								"statistics",
+								"1"
+							]
+						},
+						"description": "Get comprehensive course statistics (ADMIN, FACULTY)"
+					}
+				},
+				{
+					"name": "Get Department Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/department/Computer Science",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"department",
+								"Computer Science"
+							]
+						},
+						"description": "Get comprehensive department statistics (ADMIN, FACULTY)"
+					}
+				}
+			],
+			"description": "Comprehensive reporting endpoints with detailed statistics"
+		}
+	]
+}
