@@ -172,6 +172,7 @@ A Postman collection is included in the project root (`Student-Course-Management
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
+This project was developed as part of a university academic requirement.
 
 ## 👤 Author
 
