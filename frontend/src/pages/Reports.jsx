@@ -6,7 +6,8 @@ import {
   fetchGradeDistribution, fetchFacultyWorkload, fetchDepartmentReport, fetchStudentTranscript,
   fetchCurrentStudent
 } from '../api';
-import { BarChart3, FileText } from 'lucide-react';
+import { exportCSV, exportPDF, buildTranscriptHTML } from '../utils/export';
+import { BarChart3, FileText, Download } from 'lucide-react';
 import {
   PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, Legend
@@ -140,7 +141,15 @@ export default function Reports() {
           {loading && <div className="loading-center"><div className="spinner" /></div>}
           {reportData?.success && reportData.students && (
             <div className="chart-card" style={{ marginTop: 16 }}>
-              <h3>Enrolled Students ({reportData.totalStudents})</h3>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h3>Enrolled Students ({reportData.totalStudents})</h3>
+                <button className="btn btn-sm" style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
+                  onClick={() => exportCSV(
+                    [{key:'name',label:'Name'},{key:'email',label:'Email'},{key:'dept',label:'Department'}],
+                    reportData.students.map(s => ({ name: `${s.firstName} ${s.lastName}`, email: s.user?.email||'', dept: s.department })),
+                    'enrollment_report'
+                  )}><Download size={14} /> Export CSV</button>
+              </div>
               <div className="table-container" style={{ border: 'none', marginTop: 12 }}>
                 <table className="data-table">
                   <thead><tr><th>Name</th><th>Email</th><th>Department</th></tr></thead>
@@ -319,20 +328,34 @@ export default function Reports() {
                     {reportData.transcript.department} • ID: {reportData.transcript.studentId}
                   </p>
                 </div>
-                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  {[
-                    { label: 'GPA', value: reportData.transcript.gpa?.toFixed(2) || '—', color: 'var(--success)' },
-                    { label: 'Courses', value: reportData.transcript.totalCourses || 0, color: 'var(--accent)' },
-                    { label: 'Credits', value: reportData.transcript.totalCredits || 0, color: 'var(--cyan)' },
-                  ].map((s, i) => (
-                    <div key={i} style={{
-                      textAlign: 'center', padding: '10px 20px',
-                      background: 'var(--bg-elevated)', borderRadius: 10,
-                    }}>
-                      <div style={{ fontSize: 24, fontWeight: 800, color: s.color }}>{s.value}</div>
-                      <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 2 }}>{s.label}</div>
-                    </div>
-                  ))}
+                <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <button className="btn btn-sm" style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
+                      onClick={() => exportCSV(
+                        [{key:'code',label:'Code'},{key:'name',label:'Course'},{key:'semester',label:'Semester'},{key:'credits',label:'Credits'},{key:'internal',label:'Internal'},{key:'external',label:'External'},{key:'total',label:'Total'},{key:'grade',label:'Grade'}],
+                        (reportData.transcript.courses||[]).map(c => ({ code:c.courseCode, name:c.courseName, semester:c.semester||'', credits:c.credits, internal:c.internalMarks, external:c.externalMarks, total:c.totalMarks, grade:c.grade })),
+                        `transcript_${reportData.transcript.studentName.replace(/\s/g,'_')}`
+                      )}><Download size={14} /> CSV</button>
+                    <button className="btn btn-sm" style={{ background: 'var(--accent-muted)', color: 'var(--accent)', border: '1px solid var(--accent-muted)' }}
+                      onClick={() => exportPDF(`Transcript - ${reportData.transcript.studentName}`, buildTranscriptHTML(reportData.transcript))}>
+                      <FileText size={14} /> PDF
+                    </button>
+                  </div>
+                  <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                    {[
+                      { label: 'GPA', value: reportData.transcript.gpa?.toFixed(2) || '—', color: 'var(--success)' },
+                      { label: 'Courses', value: reportData.transcript.totalCourses || 0, color: 'var(--accent)' },
+                      { label: 'Credits', value: reportData.transcript.totalCredits || 0, color: 'var(--cyan)' },
+                    ].map((s, i) => (
+                      <div key={i} style={{
+                        textAlign: 'center', padding: '10px 20px',
+                        background: 'var(--bg-elevated)', borderRadius: 10,
+                      }}>
+                        <div style={{ fontSize: 24, fontWeight: 800, color: s.color }}>{s.value}</div>
+                        <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 2 }}>{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
