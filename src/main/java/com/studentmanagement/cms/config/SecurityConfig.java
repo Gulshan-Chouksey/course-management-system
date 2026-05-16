@@ -97,6 +97,7 @@ public class SecurityConfig {
             // CSRF Protection - Disabled only for H2 console in development
             .csrf(csrf -> csrf
                 .ignoringRequestMatchers("/h2-console/**") // Allow H2 console access in development
+                .ignoringRequestMatchers("/api/**", "/login", "/logout") // Allow React SPA access
             )
             
             // Configure security headers
@@ -106,7 +107,7 @@ public class SecurityConfig {
                     .headerValue(org.springframework.security.web.header.writers.XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK)
                 ) // Enable XSS protection
                 .contentSecurityPolicy(csp -> csp
-                    .policyDirectives("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';")
+                    .policyDirectives("default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data: https://api.dicebear.com;")
                 )
             )
             
