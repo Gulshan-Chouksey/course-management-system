@@ -75,6 +75,9 @@ public class SecurityConfig {
                 // Permit access to login and register endpoints
                 .requestMatchers("/", "/login", "/register", "/api/auth/**").permitAll()
                 
+                // Permit access to Swagger documentation
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                
                 // Permit public access to view courses (GET only)
                 .requestMatchers("/api/courses", "/api/courses/**").permitAll()
                 
@@ -98,6 +101,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf
                 .ignoringRequestMatchers("/h2-console/**") // Allow H2 console access in development
                 .ignoringRequestMatchers("/api/**", "/login", "/logout") // Allow React SPA access
+                .ignoringRequestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html") // Allow Swagger access
             )
             
             // Configure security headers
