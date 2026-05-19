@@ -172,13 +172,13 @@ A Postman collection is included in the project root (`Student-Course-Management
 ## Screenshots
 
 ### Login Page
-<img src="./Screenshot_26-3-2026_19238_localhost.jpeg" alt="Login Page" width="70%" />
+<img src="./Login Page.png" alt="Login Page" width="70%" />
 
 ### Admin Dashboard
-<img src="./Screenshot_26-3-2026_192324_localhost.jpeg" alt="Admin Dashboard" width="70%" />
+<img src="./Admin Dashboard.png" alt="Admin Dashboard" width="70%" />
 
 ### Reports Page
-<img src="./Screenshot_26-3-2026_192349_localhost.jpeg" alt="Faculty Dashboard" width="70%" />
+<img src="./Reports.png" alt="Faculty Dashboard" width="70%" />
 
 ## 📄 License
 
