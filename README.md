@@ -2,6 +2,17 @@
 
 A comprehensive **Student Course Management System** built with Spring Boot that allows educational institutions to manage students, courses, faculty, enrollments, grades, and schedules efficiently.
 
+## Screenshots
+
+### Login Page
+<img src="./Login Page.png" alt="Login Page" width="70%" />
+
+### Admin Dashboard
+<img src="./Admin Dashboard.png" alt="Admin Dashboard" width="70%" />
+
+### Reports Page
+<img src="./Reports.png" alt="Faculty Dashboard" width="70%" />
+
 ## 🚀 Features
 
 - **Student Management** - Add, update, delete, and view student information
@@ -168,17 +179,6 @@ Run the tests using Maven:
 ## 📮 Postman Collection
 
 A Postman collection is included in the project root (`Student-Course-Management-System.postman_collection.json`) for testing the API endpoints.
-
-## Screenshots
-
-### Login Page
-<img src="./Login Page.png" alt="Login Page" width="70%" />
-
-### Admin Dashboard
-<img src="./Admin Dashboard.png" alt="Admin Dashboard" width="70%" />
-
-### Reports Page
-<img src="./Reports.png" alt="Faculty Dashboard" width="70%" />
 
 ## 📄 License
 
