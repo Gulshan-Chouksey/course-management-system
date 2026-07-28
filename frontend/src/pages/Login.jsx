@@ -74,8 +74,8 @@ export default function Login() {
         <div className="login-left">
           <div className="login-brand">
             <div className="login-logo"><PenTool size={22} color="white" strokeWidth={2.2} /></div>
-            <h1>Course Management<br />System</h1>
-            <p>A comprehensive platform for managing academic records, courses, and student progress.</p>
+            <h1>AcademiaX</h1>
+            <p>Next-generation platform for managing academic records, courses, and student progress.</p>
           </div>
 
           <div className="login-features">

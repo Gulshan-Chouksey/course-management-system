@@ -8,11 +8,11 @@
 		<version>3.5.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.studentmanagement</groupId>
-	<artifactId>course-management-system</artifactId>
+	<groupId>com.academiax</groupId>
+	<artifactId>academia-x</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Student Course Management System</name>
-	<description>Demo project for Spring Boot</description>
+	<name>AcademiaX - Course &amp; Student Management Platform</name>
+	<description>AcademiaX — Next-Gen Academic &amp; Course Management Platform</description>
 	<url/>
 	<licenses>
 		<license/>

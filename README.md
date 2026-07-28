@@ -1,6 +1,6 @@
-# Student Course Management System
+# AcademiaX — Next-Gen Academic & Course Management Platform
 
-A comprehensive **Student Course Management System** built with Spring Boot that allows educational institutions to manage students, courses, faculty, enrollments, grades, and schedules efficiently.
+A comprehensive, production-grade **AcademiaX** platform built with Spring Boot and React that allows educational institutions to manage students, courses, faculty, enrollments, grades, and schedules efficiently.
 
 ## Screenshots
 
@@ -43,7 +43,7 @@ A comprehensive **Student Course Management System** built with Spring Boot that
 ```
 src/
 ├── main/
-│   ├── java/com/studentmanagement/cms/
+│   ├── java/com/academiax/
 │   │   ├── config/           # Security & Application Configuration
 │   │   ├── controller/       # REST Controllers & View Controllers
 │   │   ├── dto/              # Data Transfer Objects
@@ -178,7 +178,7 @@ Run the tests using Maven:
 
 ## 📮 Postman Collection
 
-A Postman collection is included in the project root (`Student-Course-Management-System.postman_collection.json`) for testing the API endpoints.
+A Postman collection is included in the project root (`AcademiaX.postman_collection.json`) for testing the API endpoints.
 
 ## 📄 License
 

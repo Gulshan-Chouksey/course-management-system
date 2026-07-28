@@ -57,7 +57,7 @@ export function exportPDF(title, htmlContent) {
       @media print { body { margin: 20px; } }
     </style></head><body>
     ${htmlContent}
-    <div class="footer">Generated on ${new Date().toLocaleString()} — Course Management System</div>
+    <div class="footer">Generated on ${new Date().toLocaleString()} — AcademiaX Platform</div>
     </body></html>
   `);
   win.document.close();

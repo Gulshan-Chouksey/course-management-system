@@ -80,8 +80,8 @@ export default function Sidebar() {
                 <PenTool size={20} color="white" strokeWidth={2.2} />
               </div>
               <div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-primary)' }}>CMS</div>
-                <div style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>Course Management</div>
+                <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>Academia<span style={{ color: 'var(--accent)' }}>X</span></div>
+                <div style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>Academic Operations</div>
               </div>
             </div>
           )}
