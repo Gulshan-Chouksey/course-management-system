@@ -4,14 +4,14 @@ A comprehensive, production-grade **AcademiaX** platform built with Spring Boot 
 
 ## Screenshots
 
-### Login Page
-<img src="./Login Page.png" alt="Login Page" width="70%" />
+### Login Page & Authentication Portal
+<img src="./AcademiaX-Login.png" alt="AcademiaX Login Page" width="85%" />
 
-### Admin Dashboard
-<img src="./Admin Dashboard.png" alt="Admin Dashboard" width="70%" />
+### Admin Dashboard & Institutional Overview
+<img src="./AcademiaX-Admin-Dashboard.png" alt="AcademiaX Admin Dashboard" width="85%" />
 
-### Reports Page
-<img src="./Reports.png" alt="Faculty Dashboard" width="70%" />
+### Reports & Academic Analytics
+<img src="./AcademiaX-Reports-Analytics.png" alt="AcademiaX Reports and Analytics" width="85%" />
 
 ## 🚀 Features
 
@@ -83,8 +83,8 @@ The system includes the following entities:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Gulshan-Chouksey/course-management-system.git
-   cd course-management-system
+   git clone https://github.com/Gulshan-Chouksey/academiax.git
+   cd academiax
    ```
 
 2. **Build the project**
@@ -192,7 +192,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Gulshan-Chouksey/course-management-system/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Gulshan-Chouksey/academiax/issues).
 
 ## ⭐ Show your support
 
